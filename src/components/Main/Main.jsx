@@ -7,47 +7,74 @@ import * as api from "../../utils/api";
 
 const Main = () => {
   const [generationId, setGenerationId] = useState(1);
-  const [pokemonList, setPokemonList] = useState([]);
+  const [allPokemons, setAllPokemons] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cards, setCards] = useState([]);
+  const cardsPerPage = 20;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     async function fetchGenerationData() {
-      setLoading(true);
-      try {
-        const species = await api.getPokemonsByGeneration(generationId);
+      setCurrentPage(1);
 
-        // Pega os primeiros 20 Pokémon da geração por exemplo
-        const promises = species
-          .slice(0, 20)
-          .map((pokemon) => api.getPokemonDetails(pokemon.name));
-
-        const results = await Promise.all(promises);
-        setPokemonList(results);
-      } catch (err) {
-        console.error("Erro ao carregar dados:", err);
-      } finally {
-        setLoading(false);
-      }
+      const pokemons = await api.getPokemonsByGeneration(generationId);
+      setAllPokemons(pokemons);
     }
-
     fetchGenerationData();
   }, [generationId]);
 
-  const handleSelectGeneration = (id) => {
-    setGenerationId(id);
-  };
+  useEffect(() => {
+    async function loadPage() {
+      const start = (currentPage - 1) * cardsPerPage;
+      const end = start + cardsPerPage;
+      const currentCards = allPokemons.slice(start, end);
+
+      const cardResults = await Promise.allSettled(
+        currentCards.map((pokemon) => api.getPokemonDetails(pokemon.name))
+      );
+
+      const successfulCards = cardResults
+        .filter((result) => result.status === "fulfilled" && result.value.image)
+        .map((result) => ({
+          name: result.value.name,
+          image: result.value.image,
+        }));
+
+      setCards(successfulCards);
+    }
+
+    if (allPokemons.length > 0) {
+      loadPage();
+    }
+  }, [allPokemons, currentPage]);
+
+  const totalPages = Math.ceil(allPokemons.length / cardsPerPage);
 
   return (
     <>
       <div className="main__gen-list">
-        <Navbar onSelectGeneration={handleSelectGeneration} />
+        <Navbar onSelectGeneration={(id) => setGenerationId(id)} />
       </div>
       <div className="main__card-grid">
-        {loading ? (
-          <p>Carregando Pokémon...</p>
-        ) : (
-          <CardGrid pokemons={pokemonList} />
-        )}
+        <CardGrid pokemons={cards} />
+      </div>
+      <div className="main__pagination">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Prev
+        </button>
+        <span>
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next
+        </button>
       </div>
     </>
   );

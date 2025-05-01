@@ -12,12 +12,16 @@ export default function CardGrid({ pokemons }) {
     <div className="card-grid">
       {pokemons.map((pokemon) => (
         <div
+          className="card-grid__card"
           key={pokemon.name}
-          className="card"
           onClick={() => handleCardClick(pokemon.name)}
         >
-          <img src={pokemon.image} alt={pokemon.name} />
-          <h3>{pokemon.name}</h3>
+          <img
+            className="card-grid__image"
+            src={pokemon.image}
+            alt={pokemon.name}
+          />
+          <h3 className="card-grid__name">{pokemon.name}</h3>
         </div>
       ))}
     </div>

@@ -20,7 +20,7 @@ export async function getPokemonDetails(name) {
 
     return {
       name: response.data.name,
-      image: response.data.sprites.front_default,
+      image: response.data.sprites?.front_default,
     };
   } catch (error) {
     console.error("Error fetching card details:", error);
