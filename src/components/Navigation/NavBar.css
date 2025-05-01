@@ -1,0 +1,25 @@
+.nav__title {
+  font-size: 36px;
+  line-height: 50px;
+  margin: 0;
+}
+
+.nav__gen-list {
+  display: flex;
+  column-gap: 20px;
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 20px;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav__link:hover {
+  color: #2f80ed;
+  text-decoration: underline;
+  font-weight: bold;
+}

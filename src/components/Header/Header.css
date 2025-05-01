@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+}
+
+.header__logo {
+  width: 450px;
+  height: 75px;
+  object-fit: contain;
+  cursor: pointer;
+
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin: 0;
+}
+
+.header__right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.header__icons {
+  display: flex;
+  gap: 20px;
+}
+
+.header__icon {
+  width: 35px;
+  height: 35px;
+  color: #f3a683;
+  transition: color 0.3s ease;
+}
+
+.header__icon:hover {
+  color: #e77f67;
+}
+
+.header__current-user-email {
+  margin-right: 56px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header__auth-button {
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/*------- Consulta midia TABLET -------*/
+@media screen and (max-width: 1024px) {
+  .header__logo {
+    margin: 28px 0 32px;
+    padding: 0 6%;
+  }
+}
+
+/*------- Consulta midia MOBILE -------*/
+@media screen and (max-width: 650px) {
+  .header__logo {
+    margin: 28px 0 32px;
+    padding: 0 27px;
+    width: 126px;
+    height: 27px;
+  }
+}
