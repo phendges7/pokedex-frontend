@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Navbar from "../Navigation/NavBar";
-import CardGrid from "../CardGrid/CardGrid";
+import Navbar from "../../components/Navigation/NavBar";
+import CardGrid from "../../components/CardGrid/CardGrid";
 
 import * as api from "../../utils/api";
 
@@ -31,7 +31,7 @@ const Main = () => {
       const currentCards = allPokemons.slice(start, end);
 
       const cardResults = await Promise.allSettled(
-        currentCards.map((pokemon) => api.getPokemonDetails(pokemon.name))
+        currentCards.map((pokemon) => api.getPokemonPreview(pokemon.name))
       );
 
       const successfulCards = cardResults

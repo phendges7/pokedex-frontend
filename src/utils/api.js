@@ -14,16 +14,28 @@ export async function getPokemonsByGeneration(generationId) {
   }
 }
 
-export async function getPokemonDetails(name) {
+export async function getPokemonPreview(name) {
   try {
     const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
 
     return {
       name: response.data.name,
-      image: response.data.sprites?.front_default,
+      image:
+        response.data.sprites?.front_default ||
+        response.data.sprites?.other?.["official-artwork"]?.front_default,
     };
   } catch (error) {
     console.error("Error fetching card details:", error);
+    throw error;
+  }
+}
+
+export async function getPokemonDetails(name) {
+  try {
+    const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Pokémon details:", error);
     throw error;
   }
 }

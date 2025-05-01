@@ -4,7 +4,8 @@
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/NavBar.css);
 @import url(./components/SearchForm/SearchForm.css);
-@import url(./components//Main/Main.css);
+@import url(./pages/Main/Main.css);
+@import url(./pages/PokemonDetails/PokemonDetails.css);
 @import url(./components/Footer/Footer.css);
 
 body {
@@ -13,5 +14,5 @@ body {
   font-family: "Pokemon";
   font-size: 24px;
   background-color: pink;
-  color: azure;
+  color: #333;
 }
