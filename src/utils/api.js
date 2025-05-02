@@ -51,3 +51,26 @@ export async function getAllPokemons() {
     throw error;
   }
 }
+
+export async function getSpeciesInfo(id) {
+  try {
+    const response = axios.get(`${BASE_URL}/pokemon-species/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching species info:", error);
+    throw error;
+  }
+}
+
+export async function getEvolutionChain(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching evolution chain:", error);
+    throw error;
+  }
+}
