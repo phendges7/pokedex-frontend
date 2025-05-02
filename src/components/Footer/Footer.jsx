@@ -1,5 +1,5 @@
-import instagram from "../../assets/instagramIcon.png";
-import facebook from "../../assets/facebookIcon.png";
+import instagram from "../../assets/linkedin-icon.svg";
+import github from "../../assets/github-icon.svg";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
       <ul className="footer__social">
         <li className="footer__social-item">
           <a
-            href="https://www.instagram.com/"
+            href="https://www.linkedin.com/in/phendges7/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -23,15 +23,11 @@ const Footer = () => {
         </li>
         <li className="footer__social-item">
           <a
-            href="https://www.facebook.com/"
+            href="https://github.com/phendges7"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={facebook}
-              alt="Facebook"
-              className="footer__social-icon"
-            />
+            <img src={github} alt="GitHub" className="footer__social-icon" />
           </a>
         </li>
       </ul>

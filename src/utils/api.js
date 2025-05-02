@@ -39,3 +39,15 @@ export async function getPokemonDetails(name) {
     throw error;
   }
 }
+
+export async function getAllPokemons() {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/pokemon?limit=100000&offset=0`
+    );
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching all Pokémon list:", error);
+    throw error;
+  }
+}

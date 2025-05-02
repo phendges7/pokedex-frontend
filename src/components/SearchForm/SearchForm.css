@@ -1,38 +1,162 @@
-/* SearchForm.css */
 .search-form {
+  /* Layout */
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 50px;
-  overflow: hidden;
-  background-color: #fffaf7;
+  position: relative;
+
+  /* Dimensões */
   max-width: 400px;
   width: 100%;
   height: 44px;
+
+  /* Estilo Visual */
+  background-color: #fffaf7;
+  border: 1px solid #f3a683;
+  border-radius: 25px;
+  overflow: visible;
 }
 
-.search-form__input {
+/* ====================== */
+/* COMPONENTES INTERNOS */
+/* ====================== */
+
+/* Container do Input */
+.search-form__input-container {
   flex: 1;
-  border: none;
+  position: relative;
+  display: flex;
+  min-width: 0; /* Permite que o input encolha */
+}
+
+/* Campo de Input */
+.search-form__input {
+  /* Layout */
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+
+  /* Espaçamento */
   margin: 0 16px;
-  font-size: 16px;
+  padding-right: 8px;
+
+  /* Estilo Visual */
+  border: none;
   background-color: transparent;
   outline: none;
+  font-size: 16px;
+
+  /* Placeholder */
+  &::placeholder {
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: clip;
+  }
 }
 
+/* Botão de Busca */
 .search-form__button {
+  /* Layout */
+  flex-shrink: 0;
+  height: 100%;
+
+  /* Espaçamento */
+  padding: 0 24px;
+
+  /* Estilo Visual */
   background-color: #f3a683;
   color: white;
   font-weight: bold;
   border: none;
-  padding: 0 24px;
-  height: 100%;
+  border-radius: 0 25px 25px 0; /* Arredondado apenas à direita */
   cursor: pointer;
+
+  /* Transições */
   transition: background-color 0.3s ease;
-  align-items: center;
+
+  /* Estados */
+  &:hover {
+    background-color: #e77f67;
+  }
 }
 
-.search-form__button:hover {
-  background-color: #e77f67;
+/* ====================== */
+/* DROPDOWN DE SUGESTÕES */
+/* ====================== */
+
+/* Container de Sugestões */
+.search-form__suggestions {
+  /* Posicionamento */
+  position: absolute;
+  top: 45%;
+  left: -1px;
+  right: -1px;
+  z-index: 100;
+
+  /* Dimensões */
+  max-height: 200px;
+
+  /* Layout */
+  padding: 0;
+  list-style-type: none;
+  overflow-y: auto;
+
+  /* Estilo Visual */
+  background-color: #fffaf7;
+  border: 1px solid #f3a683;
+  border-top: none;
+  border-radius: 0 0 50px 50px; /* Arredondado apenas na base */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Animação */
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.1s ease;
+
+  /* Esconder scrollbar */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Itens de Sugestão */
+.search-form__suggestion {
+  /* Espaçamento */
+  padding: 10px 16px;
+
+  /* Tipografia */
+  text-transform: capitalize;
+
+  /* Interação */
+  cursor: pointer;
+
+  /* Estados */
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+/* ====================== */
+/* ESTADOS E MODIFICADORES */
+/* ====================== */
+
+/* Quando há sugestões visíveis */
+.search-form--has-suggestions {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-form__button--has-suggestions {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Dropdown visível */
+.search-form__suggestions--visible {
+  transform: scaleY(1);
+  opacity: 1;
 }

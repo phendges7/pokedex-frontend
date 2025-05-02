@@ -5,5 +5,25 @@
   flex-direction: column;
   align-items: center;
   background-color: pink;
-  border: 1px solid #333;
+}
+
+.main__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.main__pagination span {
+  padding: 0 10px;
+}
+
+.main__pagination button {
+  background-color: #f3a683;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

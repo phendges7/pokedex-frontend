@@ -57,16 +57,18 @@ const PokemonDetails = () => {
                 <td>Tipo(s)</td>
                 <td>{pokemon.types.map((t) => t.type.name).join(", ")}</td>
               </tr>
+              <tr>
+                <td>Habilidades</td>
+                <td>
+                  <ul className="pokemon-details__abilities-list">
+                    {pokemon.abilities.map((a) => (
+                      <li key={a.ability.name}>{a.ability.name}</li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <div className="pokemon-details__abilities">
-            <h3 className="pokemon-details__subtitle">Habilidades</h3>
-            <ul className="pokemon-details__abilities-list">
-              {pokemon.abilities.map((a) => (
-                <li key={a.ability.name}>{a.ability.name}</li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </div>
