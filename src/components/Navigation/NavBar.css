@@ -6,7 +6,7 @@
 
 .nav__gen-list {
   display: flex;
-  column-gap: 20px;
+  column-gap: 50px;
   list-style-type: none;
   font-weight: 500;
   font-size: 30px;
@@ -15,7 +15,8 @@
 
 .nav__gen-list button {
   background-color: #f3a683;
-  color: white;
+  color: #333;
+  font-weight: 900;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;

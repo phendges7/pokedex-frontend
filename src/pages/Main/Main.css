@@ -1,10 +1,12 @@
 .content {
-  padding: 3% 0;
+  flex: 1;
+  padding: 3% 0 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: pink;
+  overflow: visible;
 }
 
 .main__pagination {
@@ -31,26 +33,16 @@
 
 .main__card-grid {
   position: relative;
-  min-height: 600px;
   width: 100%;
   margin-bottom: 40px;
   will-change: contents; /* Otimização para browsers */
   contain: layout; /* Melhora performance */
 }
 
-.skeleton-grid,
 .card-grid {
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
   right: 0;
   backface-visibility: hidden; /* Melhora performance */
-}
-
-.skeleton-grid {
-  z-index: 10;
-}
-
-.card-grid {
-  z-index: 5;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import PokemonBasicInfo from "../BasicInfo/BasicInfo";
 import PokemonEvolution from "../Evolution/Evolution";
+import Preloader from "../../../components/Preloader/Preloader";
 
 const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -10,7 +11,7 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
     pokemon?.sprites?.other?.["official-artwork"]?.front_default ||
     pokemon?.sprites?.front_default;
 
-  if (loading) return <div>Carregando...</div>;
+  if (loading) return <Preloader />;
   if (!pokemon) return <div>Pokémon não encontrado</div>;
 
   return (
@@ -25,6 +26,10 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
         >
           <div className="pokemon-details__front">
             <PokemonBasicInfo pokemon={pokemon} image={image} />
+            <div className="pokemon-details__hint">
+              <span className="hint-icon">↻</span>
+              <span className="hint-text">Clique para virar</span>
+            </div>
           </div>
 
           <div className="pokemon-details__back">

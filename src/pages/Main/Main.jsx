@@ -4,7 +4,7 @@ import CardGrid from "../../components/CardGrid/CardGrid";
 import * as api from "../../utils/api";
 import PreLoader from "../../components/Preloader/Preloader";
 
-const cardsPerPage = 15;
+const cardsPerPage = 10;
 const maxAttempts = 2;
 
 const Main = () => {

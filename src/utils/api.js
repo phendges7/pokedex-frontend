@@ -16,7 +16,6 @@ export async function getPokemonsByGeneration(generationId) {
 export async function getPokemonPreview(name) {
   try {
     const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
-    console.log("Pokemon preview response:", response.data.name);
     return {
       name: response.data.name,
       image:

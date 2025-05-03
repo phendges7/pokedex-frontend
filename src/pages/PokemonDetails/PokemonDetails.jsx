@@ -33,7 +33,9 @@ const PokemonDetails = () => {
 
               return {
                 name: pokemonName,
-                image: pokemonData.sprites?.other?.home?.front_default,
+                image:
+                  pokemonData.sprites?.other?.["official-artwork"]
+                    ?.front_default,
               };
             } catch (error) {
               console.error(`Error fetching data for ${pokemonName}:`, error);

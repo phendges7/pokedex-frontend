@@ -3,6 +3,9 @@
   justify-content: space-between;
   align-items: center;
   background-color: pink;
+  width: 100%;
+  padding: 20px 0; /* Adicionado padding */
+  position: relative; /* Alterado de absolute */
 }
 
 .footer__copyright {
@@ -16,7 +19,7 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  margin: 0;
+  margin: 0 auto;
 }
 
 .footer__social {

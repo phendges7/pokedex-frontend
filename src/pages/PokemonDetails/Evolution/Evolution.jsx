@@ -14,7 +14,7 @@ const Evolution = ({ evolutionChain }) => (
       className="evolution__swiper"
       modules={[Navigation, Pagination]}
       spaceBetween={10}
-      slidesPerView={"auto"}
+      slidesPerView={3}
       navigation
       pagination={{ clickable: true }}
       breakpoints={{
