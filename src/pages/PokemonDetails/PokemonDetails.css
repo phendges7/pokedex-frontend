@@ -186,3 +186,29 @@
     max-height: 200px;
   }
 }
+.pokemon-details__evolution {
+  margin-top: 2rem;
+}
+
+.pokemon-details__evolution-chain {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.pokemon-details__evolution-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-details__evolution-image {
+  width: 80px;
+  height: 80px;
+}
+
+.pokemon-details__evolution-name {
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+}

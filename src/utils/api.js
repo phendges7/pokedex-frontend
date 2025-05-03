@@ -32,6 +32,7 @@ export async function getPokemonPreview(name) {
 
 export async function getPokemonDetails(name) {
   try {
+    console.log("Fetching Pokémon details:", name);
     const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
     return response.data;
   } catch (error) {

@@ -81,7 +81,6 @@ const Main = () => {
 
     const loadPage = async () => {
       setIsLoading(true);
-      debugger;
       const validPokemons = getValidPokemons();
       const start = (currentPage - 1) * cardsPerPage;
       const end = start + cardsPerPage;
