@@ -7,8 +7,8 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const image =
-    pokemon.sprites?.other?.["official-artwork"]?.front_default ||
-    pokemon.sprites?.front_default;
+    pokemon?.sprites?.other?.["official-artwork"]?.front_default ||
+    pokemon?.sprites?.front_default;
 
   if (loading) return <div>Carregando...</div>;
   if (!pokemon) return <div>Pokémon não encontrado</div>;
@@ -31,9 +31,6 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
             <p className="pokemon-details__description">
               {pokemon.name} é um Pokémon incrível!
             </p>
-            <div className="pokemon-details__graph">
-              {/* Gráfico de status pode ser outro componente */}
-            </div>
             <PokemonEvolution evolutionChain={evolutionChain} />
           </div>
         </div>

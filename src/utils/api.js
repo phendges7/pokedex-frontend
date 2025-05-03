@@ -3,7 +3,6 @@ import axios from "axios";
 const BASE_URL = "https://pokeapi.co/api/v2";
 
 export async function getPokemonsByGeneration(generationId) {
-  console.log("Fetching Pokémon by generation:", generationId);
   try {
     const response = await axios.get(`${BASE_URL}/generation/${generationId}`);
     const { pokemon_species } = response.data;
@@ -17,7 +16,6 @@ export async function getPokemonsByGeneration(generationId) {
 export async function getPokemonPreview(name) {
   try {
     const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
-
     return {
       name: response.data.name,
       image:
@@ -32,7 +30,6 @@ export async function getPokemonPreview(name) {
 
 export async function getPokemonDetails(name) {
   try {
-    console.log("Fetching Pokémon details:", name);
     const response = await axios.get(`${BASE_URL}/pokemon/${name}`);
     return response.data;
   } catch (error) {
@@ -55,7 +52,7 @@ export async function getAllPokemons() {
 
 export async function getSpeciesInfo(id) {
   try {
-    const response = axios.get(`${BASE_URL}/pokemon-species/${id}`);
+    const response = await axios.get(`${BASE_URL}/pokemon-species/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching species info:", error);

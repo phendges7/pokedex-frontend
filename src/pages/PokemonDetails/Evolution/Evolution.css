@@ -1,0 +1,97 @@
+/* Block: evolution */
+.evolution {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Element: title */
+.evolution__title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Element: swiper container */
+.evolution__swiper {
+  padding: 20px 5px 40px;
+}
+
+/* Element: slide */
+.evolution__slide {
+  display: flex;
+  justify-content: center;
+}
+
+/* Element: card */
+.evolution__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem;
+  margin: 0 2px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
+}
+
+/* Element: image */
+.evolution__image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* Element: placeholder */
+.evolution__placeholder {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+/* Element: name */
+.evolution__name {
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-top: auto;
+  color: #333;
+}
+
+.swiper-wrapper {
+  justify-content: center;
+}
+
+.swiper-slide evolution__slide {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .evolution__card {
+    padding: 0.8rem;
+  }
+
+  .evolution__image,
+  .evolution__placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .evolution__name {
+    font-size: 1rem;
+  }
+}

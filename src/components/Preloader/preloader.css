@@ -1,52 +1,27 @@
-.skeleton-container {
-  opacity: 1;
+.overlay-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.skeleton-container.fade-out {
-  opacity: 0;
+.overlay-loader__image {
+  width: 80px;
+  height: 80px;
+  animation: overlay-loader-spin 1s linear infinite;
 }
 
-.skeleton-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 16px;
-  width: 100%;
-  height: 100%;
-  padding: 2rem;
-}
-
-.skeleton-card {
-  width: 100%;
-  height: 200px;
-  background-color: transparent;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição igual ao card */
-}
-
-.skeleton-image {
-  width: 100%;
-  height: 70%;
-  background: transparent;
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-name {
-  width: 80%;
-  height: 20px;
-  margin: 10px auto;
-  background-color: transparent;
-  border-radius: 4px;
-}
-
-@keyframes shimmer {
+@keyframes overlay-loader-spin {
   0% {
-    background-position: 200% 0;
+    transform: rotate(0deg);
   }
   100% {
-    background-position: -200% 0;
+    transform: rotate(360deg);
   }
 }
