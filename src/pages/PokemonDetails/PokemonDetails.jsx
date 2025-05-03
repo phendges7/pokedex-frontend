@@ -1,13 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../../utils/api";
 import PokemonDetailsLayout from "./DetailsLayout/DetailsLayout";
 
 const PokemonDetails = () => {
   const { name } = useParams();
+  const navigate = useNavigate();
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
   const [evolutionChain, setEvolutionChain] = useState([]);
+
+  const handleEvolutionClick = (evolutionName) => {
+    navigate(`/pokemon/${evolutionName}`);
+  };
 
   useEffect(() => {
     async function fetchPokemonDetails() {
@@ -73,6 +78,7 @@ const PokemonDetails = () => {
       pokemon={pokemon}
       evolutionChain={evolutionChain}
       loading={loading}
+      onEvolutionClick={handleEvolutionClick}
     />
   );
 };

@@ -4,7 +4,12 @@ import PokemonBasicInfo from "../BasicInfo/BasicInfo";
 import PokemonEvolution from "../Evolution/Evolution";
 import Preloader from "../../../components/Preloader/Preloader";
 
-const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
+const PokemonDetailsLayout = ({
+  pokemon,
+  evolutionChain,
+  loading,
+  onEvolutionClick,
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const image =
@@ -36,7 +41,13 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
             <p className="pokemon-details__description">
               {pokemon.name} é um Pokémon incrível!
             </p>
-            <PokemonEvolution evolutionChain={evolutionChain} />
+            <PokemonEvolution
+              evolutionChain={evolutionChain}
+              onEvolutionClick={(evolutionName) => {
+                setIsFlipped(false);
+                onEvolutionClick(evolutionName);
+              }}
+            />
           </div>
         </div>
       </div>
@@ -46,8 +57,14 @@ const PokemonDetailsLayout = ({ pokemon, evolutionChain, loading }) => {
 
 PokemonDetailsLayout.propTypes = {
   pokemon: PropTypes.object,
-  evolutionChain: PropTypes.arrayOf(PropTypes.string),
+  evolutionChain: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string,
+    })
+  ),
   loading: PropTypes.bool.isRequired,
+  onEvolutionClick: PropTypes.func.isRequired,
 };
 
 export default PokemonDetailsLayout;
