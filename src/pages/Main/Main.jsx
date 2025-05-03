@@ -1,163 +1,131 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navigation/NavBar";
 import CardGrid from "../../components/CardGrid/CardGrid";
-import PreLoader from "../../components/Preloader/Preloader";
 import * as api from "../../utils/api";
+import PreLoader from "../../components/Preloader/Preloader";
 
 const cardsPerPage = 15;
 const maxAttempts = 2;
 
 const Main = () => {
   const [generationId, setGenerationId] = useState(1);
-  const [pokemonData, setPokemonData] = useState({
-    all: [],
-    displayed: [],
-    previous: [],
-    failed: {},
-  });
-  const [pagination, setPagination] = useState({
-    currentPage: 1,
-    totalPages: 1,
-    isLoading: false,
-    isTransitioning: false,
-  });
+  const [allPokemons, setAllPokemons] = useState([]);
+  const [displayedPokemons, setDisplayedPokemons] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
+  const [failedPokemons, setFailedPokemons] = useState({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Busca dados do Pokémon com tratamento de erro
-  const fetchPokemonWithRetry = async (name, failedMap) => {
+  // Efeito para transição de carregamento
+  useEffect(() => {
+    if (displayedPokemons.length > 0) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => setIsTransitioning(false), 500); // Tempo da transição
+      return () => clearTimeout(timer);
+    }
+  }, [displayedPokemons, isLoading]);
+
+  // Utilitário para filtrar Pokémons válidos
+  const getValidPokemons = () =>
+    allPokemons.filter(
+      (p) => !failedPokemons[p.name] || failedPokemons[p.name] < maxAttempts
+    );
+
+  // Tenta buscar preview de um Pokémon com retry tracking
+  const fetchPokemonWithRetry = async (pokemon, failedMap) => {
     try {
-      const data = await api.getPokemonPreview(name);
+      const data = await api.getPokemonPreview(pokemon.name);
       if (!data?.image) throw new Error();
-      delete failedMap[name];
-      return data;
+      if (failedMap[pokemon.name]) delete failedMap[pokemon.name];
+      return { name: pokemon.name, image: data.image };
     } catch {
-      failedMap[name] = (failedMap[name] || 0) + 1;
-      console.warn(`Falha ao carregar ${name} (tentativa ${failedMap[name]})`);
+      failedMap[pokemon.name] = (failedMap[pokemon.name] || 0) + 1;
+      console.warn(
+        `Falha ao carregar ${pokemon.name} (tentativa ${
+          failedMap[pokemon.name]
+        })`
+      );
       return null;
     }
   };
 
-  // Carrega os Pokémon da página atual
-  const loadPage = async (allPokemons, failedPokemons, page) => {
-    const validPokemons = allPokemons.filter(
-      (p) => !failedPokemons[p.name] || failedPokemons[p.name] < maxAttempts
-    );
-    const start = (page - 1) * cardsPerPage;
-    const pageSlice = validPokemons.slice(start, start + cardsPerPage);
-
-    const newFailed = { ...failedPokemons };
-    const results = await Promise.all(
-      pageSlice.map((p) => fetchPokemonWithRetry(p.name, newFailed))
-    );
-
-    return {
-      successful: results.filter(Boolean),
-      newFailed,
-      totalPages: Math.max(1, Math.ceil(validPokemons.length / cardsPerPage)),
-    };
-  };
-
-  // Carrega uma nova geração
-  const loadGeneration = async (id) => {
-    setPagination((prev) => ({ ...prev, isLoading: true }));
-
-    try {
-      const generationData = await api.getPokemonsByGeneration(id);
-      const { successful, newFailed, totalPages } = await loadPage(
-        generationData,
-        {},
-        1
-      );
-
-      setPokemonData((prev) => ({
-        all: generationData,
-        displayed: successful,
-        previous: prev.displayed,
-        failed: newFailed,
-      }));
-
-      setPagination({
-        currentPage: 1,
-        totalPages,
-        isLoading: false,
-        isTransitioning: true,
-      });
-
-      setTimeout(
-        () => setPagination((prev) => ({ ...prev, isTransitioning: false })),
-        500
-      );
-    } catch (err) {
-      console.error("Erro ao carregar geração:", err);
-      setPagination((prev) => ({ ...prev, isLoading: false }));
-    }
-  };
-
-  // Efeitos
+  // Carrega a geração ao mudar
   useEffect(() => {
-    loadGeneration(generationId);
+    const loadGeneration = async () => {
+      setIsLoading(true);
+      try {
+        const data = await api.getPokemonsByGeneration(generationId);
+        setAllPokemons(data);
+        setFailedPokemons({});
+        setCurrentPage(1);
+      } catch (err) {
+        console.error("Erro ao carregar geração:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadGeneration();
   }, [generationId]);
 
+  // Atualiza total de páginas com base nos válidos
   useEffect(() => {
-    if (pagination.currentPage === 1) return;
+    const validCount = getValidPokemons().length;
+    setTotalPages(Math.max(1, Math.ceil(validCount / cardsPerPage)));
+  }, [allPokemons, failedPokemons]);
 
-    const loadCurrentPage = async () => {
-      setPagination((prev) => ({ ...prev, isLoading: true }));
-      const { successful, newFailed } = await loadPage(
-        pokemonData.all,
-        pokemonData.failed,
-        pagination.currentPage
+  // Carrega os pokémons da página atual
+  useEffect(() => {
+    if (!allPokemons.length) return;
+
+    const loadPage = async () => {
+      setIsLoading(true);
+      const validPokemons = getValidPokemons();
+      const start = (currentPage - 1) * cardsPerPage;
+      const end = start + cardsPerPage;
+      const pageSlice = validPokemons.slice(start, end);
+
+      const newFailed = { ...failedPokemons };
+      const results = await Promise.all(
+        pageSlice.map((p) => fetchPokemonWithRetry(p, newFailed))
       );
 
-      setPokemonData((prev) => ({
-        ...prev,
-        displayed: successful,
-        failed: newFailed,
-      }));
-      setPagination((prev) => ({
-        ...prev,
-        isLoading: false,
-        isTransitioning: true,
-      }));
+      const successful = results.filter(Boolean);
+      setDisplayedPokemons(successful);
 
-      setTimeout(
-        () => setPagination((prev) => ({ ...prev, isTransitioning: false })),
-        300
+      // Atualiza falhas se houve mudança
+      const failedChanged =
+        JSON.stringify(newFailed) !== JSON.stringify(failedPokemons);
+      if (failedChanged) setFailedPokemons(newFailed);
+
+      // Recalcula páginas caso falhem demais
+      const pages = Math.max(
+        1,
+        Math.ceil(getValidPokemons().length / cardsPerPage)
       );
+      if (currentPage > pages) setCurrentPage(pages);
+
+      setIsLoading(false);
     };
 
-    loadCurrentPage();
-  }, [pagination.currentPage]);
+    loadPage();
+  }, [allPokemons, currentPage, failedPokemons]);
 
-  // Bloqueia scroll durante loading
-  useEffect(() => {
-    document.body.classList.toggle(
-      "body--no-scroll",
-      pagination.isLoading || pagination.isTransitioning
-    );
-    return () => document.body.classList.remove("body--no-scroll");
-  }, [pagination.isLoading, pagination.isTransitioning]);
-
+  // Retorna pagina inicial
   return (
     <>
-      {(pagination.isLoading || pagination.isTransitioning) && <PreLoader />}
-
+      {(isLoading || isTransitioning) && <PreLoader />}
       <div className="main__gen-list">
-        <Navbar onSelectGeneration={setGenerationId} />
+        <Navbar onSelectGeneration={(id) => setGenerationId(id)} />
       </div>
 
       <div className="main__card-grid">
-        {(pokemonData.displayed.length > 0 ||
-          pokemonData.previous.length > 0) && (
+        {displayedPokemons.length > 0 && (
           <CardGrid
-            pokemons={
-              pagination.isLoading
-                ? pokemonData.previous
-                : pokemonData.displayed
-            }
+            pokemons={displayedPokemons}
             className={`card-grid-container ${
-              !pagination.isLoading && !pagination.isTransitioning
-                ? "fade-in"
-                : ""
+              !isLoading && !isTransitioning ? "fade-in" : ""
             }`}
           />
         )}
@@ -165,30 +133,17 @@ const Main = () => {
 
       <div className="main__pagination">
         <button
-          disabled={pagination.currentPage === 1 || pagination.isLoading}
-          onClick={() =>
-            setPagination((prev) => ({
-              ...prev,
-              currentPage: prev.currentPage - 1,
-            }))
-          }
+          disabled={currentPage === 1 || isLoading}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
         >
           Anterior
         </button>
         <span>
-          Página {pagination.currentPage} de {pagination.totalPages}
+          Página {currentPage} de {totalPages}
         </span>
         <button
-          disabled={
-            pagination.currentPage === pagination.totalPages ||
-            pagination.isLoading
-          }
-          onClick={() =>
-            setPagination((prev) => ({
-              ...prev,
-              currentPage: prev.currentPage + 1,
-            }))
-          }
+          disabled={currentPage === totalPages || isLoading}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
         >
           Próxima
         </button>

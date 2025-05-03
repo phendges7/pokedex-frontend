@@ -1,6 +1,5 @@
 import React from "react";
 import pokeball from "../../assets/pokeball-icon.svg";
-import "./PreLoaderLoader.css";
 
 const PreLoader = () => {
   return (

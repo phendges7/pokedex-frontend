@@ -2,11 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "../Card/Card";
 
-export default function CardGrid({ pokemons, className = "" }) {
+export default function CardGrid({
+  pokemons = [],
+  className = "",
+  freeze = false,
+}) {
   return (
-    <div className={`card-grid ${className}`}>
+    <div className={`card-grid ${className}`} data-frozen={freeze}>
       {pokemons.map((pokemon) => (
-        <Card key={pokemon.name} pokemon={pokemon} />
+        <Card key={pokemon.name} pokemon={pokemon} disabled={freeze} />
       ))}
     </div>
   );

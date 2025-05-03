@@ -12,11 +12,30 @@
 }
 
 .card-grid-container {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-in;
-  will-change: opacity; /* Otimização para browsers */
+  will-change: opacity;
 }
 
-.card-grid-container.fade-in {
-  opacity: 1;
+.card-grid--frozen {
+  pointer-events: none;
+  opacity: 0.8;
+  filter: grayscale(20%);
+}
+
+/* Optional: Add animation for better loading indication */
+@keyframes subtlePulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.card-grid--frozen .card {
+  animation: subtlePulse 1.5s infinite;
 }
