@@ -1,28 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import "./CardGrid.css";
+import Card from "../Card/Card";
 
-export default function CardGrid({ pokemons }) {
-  const navigate = useNavigate();
-  const handleCardClick = (name) => {
-    navigate(`/pokemon/${name}`);
-  };
+export default function CardGrid({ pokemons, className = "" }) {
   return (
-    <div className="card-grid">
+    <div className={`card-grid ${className}`}>
       {pokemons.map((pokemon) => (
-        <div
-          className="card-grid__card"
-          key={pokemon.name}
-          onClick={() => handleCardClick(pokemon.name)}
-        >
-          <img
-            className="card-grid__image"
-            src={pokemon.image}
-            alt={pokemon.name}
-          />
-          <h3 className="card-grid__name">{pokemon.name}</h3>
-        </div>
+        <Card key={pokemon.name} pokemon={pokemon} />
       ))}
     </div>
   );

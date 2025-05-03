@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navigation/NavBar";
 import CardGrid from "../../components/CardGrid/CardGrid";
+import SkeletonGrid from "../../components/Preloader/Preloader";
 import * as api from "../../utils/api";
 
 const cardsPerPage = 15;
@@ -14,6 +15,16 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
   const [failedPokemons, setFailedPokemons] = useState({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Efeito para transição de carregamento
+  useEffect(() => {
+    if (displayedPokemons.length > 0) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => setIsTransitioning(false), 500); // Tempo da transição
+      return () => clearTimeout(timer);
+    }
+  }, [displayedPokemons, isLoading]);
 
   // Utilitário para filtrar Pokémons válidos
   const getValidPokemons = () =>
@@ -70,6 +81,7 @@ const Main = () => {
 
     const loadPage = async () => {
       setIsLoading(true);
+      debugger;
       const validPokemons = getValidPokemons();
       const start = (currentPage - 1) * cardsPerPage;
       const end = start + cardsPerPage;
@@ -101,6 +113,7 @@ const Main = () => {
     loadPage();
   }, [allPokemons, currentPage, failedPokemons]);
 
+  // Retorna pagina inicial
   return (
     <>
       <div className="main__gen-list">
@@ -108,10 +121,20 @@ const Main = () => {
       </div>
 
       <div className="main__card-grid">
-        {isLoading ? (
-          <p>{`Carregando Pokémon da página ${currentPage}...`}</p>
-        ) : (
-          <CardGrid pokemons={displayedPokemons} />
+        {(isLoading || isTransitioning) && (
+          <SkeletonGrid
+            count={cardsPerPage}
+            className={`skeleton-container ${!isLoading && "fade-out"}`}
+          />
+        )}
+
+        {displayedPokemons.length > 0 && (
+          <CardGrid
+            pokemons={displayedPokemons}
+            className={`card-grid-container ${
+              !isLoading && !isTransitioning ? "fade-in" : ""
+            }`}
+          />
         )}
       </div>
 

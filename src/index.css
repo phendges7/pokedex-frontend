@@ -1,10 +1,13 @@
 @import url(./vendor/fonts.css);
 
+@import url(./components/Preloader/Preloader.css);
 @import url(./components/App/App.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/NavBar.css);
 @import url(./components/SearchForm/SearchForm.css);
 @import url(./pages/Main/Main.css);
+@import url(./components/Card/Card.css);
+@import url(./components/CardGrid/CardGrid.css);
 @import url(./pages/PokemonDetails/PokemonDetails.css);
 @import url(./components/Footer/Footer.css);
 

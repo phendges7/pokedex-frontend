@@ -1,5 +1,4 @@
 import React from "react";
-import "./Preloader.css";
 
 export const SkeletonCard = () => (
   <div className="skeleton-card">
@@ -8,8 +7,8 @@ export const SkeletonCard = () => (
   </div>
 );
 
-const SkeletonGrid = ({ count = 15 }) => (
-  <div className="skeleton-grid">
+const SkeletonGrid = ({ count = 15, className = "" }) => (
+  <div className={`skeleton-grid ${className}`}>
     {Array(count)
       .fill()
       .map((_, index) => (

@@ -5,13 +5,15 @@
   flex-direction: column;
   align-items: center;
   background-color: pink;
+  min-height: 100vh;
 }
 
 .main__pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0 40px 0;
+  position: static;
 }
 
 .main__pagination span {
@@ -26,4 +28,31 @@
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.main__card-grid {
+  position: relative;
+  min-height: 600px;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0 16px; /* Consistente com o skeleton */
+  will-change: contents; /* Otimização para browsers */
+  contain: layout; /* Melhora performance */
+}
+
+.skeleton-grid,
+.card-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  backface-visibility: hidden; /* Melhora performance */
+}
+
+.skeleton-grid {
+  z-index: 10;
+}
+
+.card-grid {
+  z-index: 5;
 }
