@@ -22,20 +22,6 @@
   margin: 0 auto;
 }
 
-.footer__social {
-  display: flex;
-  column-gap: 30px;
-  list-style-type: none;
-  margin-left: auto;
-  padding: 0;
-}
-
-.footer__social-icon {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
 /*------- Consulta midia TABLET -------*/
 
 @media screen and (max-width: 1024px) {

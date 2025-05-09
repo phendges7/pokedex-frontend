@@ -8,6 +8,7 @@
 .header__home {
   width: 48px;
   height: 48px;
+  cursor: pointer;
 }
 
 .header__logo {
@@ -66,6 +67,19 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.header__social {
+  display: flex;
+  column-gap: 30px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.header__social-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 /*------- Consulta midia TABLET -------*/
