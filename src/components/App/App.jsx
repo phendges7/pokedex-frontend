@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -12,7 +11,7 @@ function App() {
       <Header />
       <main className="content">
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/pokedex-frontend" element={<Main />} />
           <Route path="/pokemon/:name" element={<PokemonDetails />} />
         </Routes>
       </main>

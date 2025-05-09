@@ -14,13 +14,13 @@ const Header = () => {
         src={home}
         alt="Home"
         className="header__home"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/pokedex-frontend")}
       />
       <img
         src={headerLogo}
         alt="Logo"
         className="header__logo"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/pokedex-frontend")}
       />
 
       <div className="header__right">
