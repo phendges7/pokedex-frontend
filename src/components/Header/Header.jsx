@@ -20,7 +20,7 @@ const Header = () => {
         src={headerLogo}
         alt="Logo"
         className="header__logo"
-        onClick={() => navigate("/pokedex-frontend")}
+        onClick={() => navigate("/pokedex-frontend/Main")}
       />
 
       <div className="header__right">

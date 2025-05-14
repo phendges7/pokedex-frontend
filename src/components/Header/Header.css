@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.header__home:hover {
+  transform: scale(1.1);
+  filter: brightness(2.1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
 .header__logo {
   width: 450px;
   height: 75px;
@@ -36,37 +41,6 @@
   align-items: center;
   gap: 20px;
   flex: 1;
-}
-
-.header__icons {
-  display: flex;
-  gap: 20px;
-}
-
-.header__icon {
-  width: 35px;
-  height: 35px;
-  color: #f3a683;
-  transition: color 0.3s ease;
-}
-
-.header__icon:hover {
-  color: #e77f67;
-}
-
-.header__current-user-email {
-  margin-right: 56px;
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.header__auth-button {
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
 .header__social {
