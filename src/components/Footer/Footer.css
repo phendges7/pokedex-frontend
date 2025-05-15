@@ -1,11 +1,8 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: pink;
   width: 100%;
-  padding: 20px 0; /* Adicionado padding */
-  position: relative; /* Alterado de absolute */
+  padding: 20px 0;
+  flex-shrink: 0;
 }
 
 .footer__copyright {
@@ -15,32 +12,16 @@
   font-size: 18px;
   line-height: 22px;
   color: #000;
-
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
   margin: 0 auto;
+  text-align: center;
 }
 
-/*------- Consulta midia TABLET -------*/
+/*------- Media Query TABLET -------*/
 
-@media screen and (max-width: 1024px) {
-  .footer {
-    padding: 0 7%;
-    margin: 0;
-  }
-}
-
-/*------- Consulta midia MOBILE -------*/
-
+/*------- Media Query MOBILE -------*/
 @media screen and (max-width: 544px) {
-  .footer {
-    padding: 0 7%;
-    margin: 0;
-  }
-
   .footer__copyright {
-    margin: 50px auto 36px;
+    margin: 0 auto 36px;
     font-size: 14px;
     line-height: 1;
   }

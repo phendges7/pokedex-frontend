@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 75px;
+  margin: 75px 0 30px;
+  padding: 0 15px;
 }
 
 .header__home {
@@ -45,7 +46,7 @@
 
 .header__social {
   display: flex;
-  column-gap: 30px;
+  column-gap: 15px;
   list-style-type: none;
   padding: 0;
 }
@@ -53,23 +54,52 @@
 .header__social-icon {
   width: 36px;
   height: 36px;
-  object-fit: contain;
 }
 
 /*------- Consulta midia TABLET -------*/
-@media screen and (max-width: 1024px) {
-  .header__logo {
-    margin: 28px 0 32px;
-    padding: 0 6%;
+@media screen and (max-width: 1100px) {
+  .header {
+    position: relative;
+    padding-bottom: 70px;
+    margin: 50px 15px 15px;
+  }
+
+  .header__social-icon {
+    width: 36px;
+    height: 36px;
   }
 }
 
 /*------- Consulta midia MOBILE -------*/
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 544px) {
+  .header {
+    margin: 40px 25px 10px;
+  }
+
+  .header__social-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media screen and (max-width: 475px) {
   .header__logo {
-    margin: 28px 0 32px;
-    padding: 0 27px;
-    width: 126px;
-    height: 27px;
+    width: 350px;
+    height: 60px;
+
+    position: absolute;
+    left: 25%;
+    transform: translate(-50%);
+    margin: 0;
+  }
+  .header {
+    margin: 30px 15px 10px;
+  }
+  .header__home {
+    opacity: 0;
+  }
+
+  .header__social {
+    margin: 10px 0;
   }
 }

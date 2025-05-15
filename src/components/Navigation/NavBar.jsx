@@ -16,6 +16,12 @@ export default function NavBar({ onSelectGeneration }) {
   return (
     <nav className="nav">
       <h3 className="nav__title">Lista de Pokemons</h3>
+      <p className="nav__description">
+        Aqui voce pode ver todos os Pokémons de cada geracao.
+        <br />
+        Clique em qualquer Pokémon abaixo para ver mais informacoes sobre o
+        mesmo.
+      </p>
       <ul className="nav__gen-list">
         {generations.map((gen) => (
           <li key={gen.id}>

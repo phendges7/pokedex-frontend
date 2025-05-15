@@ -1,0 +1,43 @@
+.home__title {
+  margin: 0;
+}
+
+.home__info {
+  margin: 0;
+  padding-top: 15px;
+}
+
+.home__button {
+  padding: 5px 10px;
+  margin: 35px auto 15px;
+  width: 250px;
+  height: 50px;
+  display: block;
+
+  font-size: 30px;
+  font-family: "Pokemon", sans-serif;
+
+  background-color: #f3a683;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home__button-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.home__button:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .home__info {
+    margin: 0 30px;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import cardBack from "../../../assets/card-back.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,7 +12,7 @@ const Evolution = ({ evolutionChain, onEvolutionClick }) => {
 
   return (
     <div className="evolution">
-      <h3 className="evolution__title">Evolução</h3>
+      <h3 className="evolution__title">Evolution</h3>
       <Swiper
         modules={[Pagination]} // Só paginação agora
         spaceBetween={15}

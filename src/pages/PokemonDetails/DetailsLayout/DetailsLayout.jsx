@@ -17,7 +17,7 @@ const PokemonDetailsLayout = ({
     pokemon?.sprites?.front_default;
 
   if (loading) return <Preloader />;
-  if (!pokemon) return <div>Pokémon não encontrado</div>;
+  if (!pokemon) return <div>Pokemon não encontrado</div>;
 
   return (
     <div className="pokemon-details">
@@ -38,9 +38,9 @@ const PokemonDetailsLayout = ({
           </div>
 
           <div className="pokemon-details__back">
-            <p className="pokemon-details__description">
-              {pokemon.name} é um Pokémon incrível!
-            </p>
+            <h3 className="pokemon-details__description">
+              {pokemon.name} e um Pokemon incrivel!
+            </h3>
             <PokemonEvolution
               evolutionChain={evolutionChain}
               onEvolutionClick={(evolutionName) => {

@@ -1,6 +1,6 @@
 import headerLogo from "../../assets/headerLogo.png";
 import home from "../../assets/home-icon.svg";
-import instagram from "../../assets/instagram-icon.svg";
+import linkedin from "../../assets/linkedin-icon.svg";
 import github from "../../assets/github-icon.svg";
 import SearchForm from "../SearchForm/SearchForm";
 import { useNavigate } from "react-router-dom";
@@ -33,8 +33,8 @@ const Header = () => {
               rel="noopener noreferrer"
             >
               <img
-                src={instagram}
-                alt="Instagram"
+                src={linkedin}
+                alt="LinkedIn"
                 className="header__social-icon"
               />
             </a>

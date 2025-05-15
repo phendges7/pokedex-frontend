@@ -35,3 +35,29 @@
 .pokemon-details__abilities-list li {
   margin-bottom: 0.3rem;
 }
+
+@media (max-width: 1024px) {
+  .pokemon-details__info {
+    padding-left: 1rem;
+  }
+
+  .pokemon-details__content-table td {
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 544px) {
+  .pokemon-details__info {
+    max-width: 100%;
+    padding-left: 0;
+    justify-content: flex-start;
+  }
+
+  .pokemon-details__content-table td {
+    padding: 0.4rem;
+  }
+
+  .pokemon-details__content-table td:first-child {
+    width: 35%;
+  }
+}

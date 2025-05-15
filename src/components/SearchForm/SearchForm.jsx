@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as api from "../../utils/api";
+import lupa from "../../assets/lupa-icon.svg";
 
 const SearchForm = () => {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [allPokemons, setAllPokemons] = useState([]);
   const navigate = useNavigate();
+  const formRef = useRef(null); // Referência pro formulário
 
   useEffect(() => {
     async function fetchAllPokemons() {
@@ -14,6 +16,20 @@ const SearchForm = () => {
       setAllPokemons(data);
     }
     fetchAllPokemons();
+  }, []);
+
+  useEffect(() => {
+    // Fecha o dropdown se clicar fora do form
+    const handleClickOutside = (event) => {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        setSuggestions([]);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleInputChange = (event) => {
@@ -44,11 +60,12 @@ const SearchForm = () => {
   const handleSuggetionClick = (name) => {
     setInput(name);
     setSuggestions([]);
-    navigate(`/pokemon/${name}`);
+    navigate(`/pokedex-frontend/pokemon/${name}`);
   };
 
   return (
     <form
+      ref={formRef}
       className={`search-form ${
         suggestions.length > 0 ? "search-form--has-suggestions" : ""
       }`}
@@ -64,9 +81,7 @@ const SearchForm = () => {
         />
 
         {suggestions.length > 0 && (
-          <ul
-            className={`search-form__suggestions search-form__suggestions--visible`}
-          >
+          <ul className="search-form__suggestions search-form__suggestions--visible">
             {suggestions.map((pokemon) => (
               <li
                 key={pokemon.name}
@@ -86,7 +101,13 @@ const SearchForm = () => {
           suggestions.length > 0 ? "search-form__button--has-suggestions" : ""
         }`}
       >
-        BUSCAR
+        <img
+          src={lupa}
+          alt="Lupa"
+          className={`search-form__icon ${
+            suggestions.length > 0 ? "search-form__icon--has-suggestions" : ""
+          }`}
+        />
       </button>
     </form>
   );

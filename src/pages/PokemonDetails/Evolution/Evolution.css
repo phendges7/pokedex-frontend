@@ -7,7 +7,7 @@
 .evolution__title {
   font-size: 1.8rem;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem;
 }
 
 /* Card styles */
@@ -67,22 +67,39 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .evolution__swiper-container {
-    padding: 0 40px;
+  .evolution__image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .evolution__placeholder {
+    width: 100px;
+    height: 100px;
   }
 }
 
-@media (max-width: 768px) {
-  .evolution__swiper-container {
-    padding: 0 30px;
+@media (max-width: 544px) {
+  .evolution__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .evolution__card {
+    padding: 0.8rem;
   }
 
   .evolution__image {
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
 
-  .evolution__button-next,
-  .evolution__button-prev {
-    display: none;
+  .evolution__name {
+    font-size: 1rem;
+  }
+
+  .evolution__placeholder {
+    width: 80px;
+    height: 80px;
+    font-size: 0.8rem;
   }
 }

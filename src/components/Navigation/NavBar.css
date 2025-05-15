@@ -1,28 +1,44 @@
+.nav {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+
 .nav__title {
   font-size: 36px;
   line-height: 50px;
-  margin: 0;
+  margin: 15px 0 0;
+}
+
+.nav__description {
+  margin: 15px 0 0;
 }
 
 .nav__gen-list {
   display: flex;
-  column-gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 30px;
   list-style-type: none;
   font-weight: 500;
   font-size: 30px;
   line-height: 20px;
   padding: 0;
+  margin: 15px 0;
 }
 
 .nav__gen-list button {
   background-color: #f3a683;
   color: #333;
   font-weight: 900;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .nav__link {
@@ -34,4 +50,10 @@
   color: #2f80ed;
   text-decoration: underline;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1280px) {
+  .nav__gen-list button {
+    margin-bottom: 10px;
+  }
 }

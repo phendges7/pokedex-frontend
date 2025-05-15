@@ -1,10 +1,12 @@
 @import url(./vendor/fonts.css);
+@import url(./vendor/normalize.css);
 
 @import url(./components/Preloader/Preloader.css);
 @import url(./components/App/App.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/NavBar.css);
 @import url(./components/SearchForm/SearchForm.css);
+@import url(./pages/Home/Home.css);
 @import url(./pages/Main/Main.css);
 @import url(./components/Card/Card.css);
 @import url(./components/CardGrid/CardGrid.css);
@@ -12,21 +14,3 @@
 @import url(./pages/PokemonDetails/BasicInfo/BasicInfo.css);
 @import url(./pages/PokemonDetails/Evolution/Evolution.css);
 @import url(./components/Footer/Footer.css);
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Pokemon";
-  font-size: 24px;
-  background-color: pink;
-  color: #333;
-}
-
-.body--no-scroll {
-  overflow: hidden;
-  pointer-events: none;
-}
-.body--no-interaction {
-  pointer-events: none;
-  cursor: wait;
-}

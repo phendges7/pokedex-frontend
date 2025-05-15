@@ -139,7 +139,7 @@ const Main = () => {
           Anterior
         </button>
         <span>
-          Página {currentPage} de {totalPages}
+          {currentPage} de {totalPages}
         </span>
         <button
           disabled={currentPage === totalPages || isLoading}

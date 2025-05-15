@@ -11,7 +11,7 @@ const PokemonDetails = () => {
   const [evolutionChain, setEvolutionChain] = useState([]);
 
   const handleEvolutionClick = (evolutionName) => {
-    navigate(`/pokemon/${evolutionName}`);
+    navigate(`/pokedex-frontend/pokemon/${evolutionName}`);
   };
 
   useEffect(() => {

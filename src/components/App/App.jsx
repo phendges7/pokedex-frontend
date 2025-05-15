@@ -14,7 +14,10 @@ function App() {
         <Routes>
           <Route path="/pokedex-frontend" element={<Home />} />
           <Route path="/pokedex-frontend/Main" element={<Main />} />
-          <Route path="/pokemon/:name" element={<PokemonDetails />} />
+          <Route
+            path="/pokedex-frontend/pokemon/:name"
+            element={<PokemonDetails />}
+          />
         </Routes>
       </main>
       <Footer />

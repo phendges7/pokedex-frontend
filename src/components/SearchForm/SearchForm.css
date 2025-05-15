@@ -7,7 +7,7 @@
   position: relative;
 
   /* Dimensões */
-  max-width: 400px;
+  max-width: 315px;
   width: 100%;
   height: 44px;
 
@@ -55,6 +55,12 @@
   }
 }
 
+/* Ícone de Busca */
+.search-form__icon {
+  width: 24px;
+  height: 24px;
+}
+
 /* Botão de Busca */
 .search-form__button {
   /* Layout */
@@ -62,7 +68,7 @@
   height: 100%;
 
   /* Espaçamento */
-  padding: 0 24px;
+  padding: 3px 20px 0 15px;
 
   /* Estilo Visual */
   background-color: #f3a683;
@@ -71,11 +77,7 @@
   border: none;
   border-radius: 0 25px 25px 0; /* Arredondado apenas à direita */
   cursor: pointer;
-
-  /* Transições */
   transition: background-color 0.3s ease;
-
-  /* Estados */
   &:hover {
     background-color: #e77f67;
   }
@@ -125,16 +127,10 @@
 
 /* Itens de Sugestão */
 .search-form__suggestion {
-  /* Espaçamento */
+  z-index: 100;
   padding: 10px 16px;
-
-  /* Tipografia */
   text-transform: capitalize;
-
-  /* Interação */
   cursor: pointer;
-
-  /* Estados */
   &:hover {
     background-color: #f2f2f2;
   }
@@ -159,4 +155,28 @@
 .search-form__suggestions--visible {
   transform: scaleY(1);
   opacity: 1;
+}
+
+@media screen and (max-width: 1100px) {
+  .search-form {
+    position: absolute;
+    margin: 0 auto;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .search-form {
+    margin: 0 auto;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .search-form__input {
+    width: 40%;
+    font-size: 16px;
+  }
 }

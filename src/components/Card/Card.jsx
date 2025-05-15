@@ -6,7 +6,7 @@ export default function Card({ pokemon }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/pokemon/${pokemon.name}`);
+    navigate(`/pokedex-frontend/pokemon/${pokemon.name}`);
   };
 
   return (
