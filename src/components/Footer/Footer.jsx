@@ -1,6 +1,3 @@
-import instagram from "../../assets/linkedin-icon.svg";
-import github from "../../assets/github-icon.svg";
-
 const Footer = () => {
   return (
     <footer className="footer" id="footer">

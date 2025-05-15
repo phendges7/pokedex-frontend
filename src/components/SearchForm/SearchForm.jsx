@@ -67,7 +67,7 @@ const SearchForm = () => {
       const data = await api.getPokemonDetails(input.toLowerCase());
       if (data) navigate(`/pokemon/${data.name}`);
     } catch (error) {
-      alert("Pokemon não encontrado!");
+      alert("Pokemon não encontrado!", error);
     }
   };
 

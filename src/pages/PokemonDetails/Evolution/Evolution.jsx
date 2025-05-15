@@ -1,7 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import cardBack from "../../../assets/card-back.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
