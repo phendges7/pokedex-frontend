@@ -7,8 +7,23 @@ const SearchForm = () => {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [allPokemons, setAllPokemons] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
-  const formRef = useRef(null); // Referência pro formulário
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    // Verifica o tamanho da tela inicialmente
+    const checkIfMobile = () => setIsMobile(window.innerWidth <= 544);
+    checkIfMobile();
+
+    // Configura o listener para mudanças de tamanho
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 544);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     async function fetchAllPokemons() {
@@ -19,7 +34,6 @@ const SearchForm = () => {
   }, []);
 
   useEffect(() => {
-    // Fecha o dropdown se clicar fora do form
     const handleClickOutside = (event) => {
       if (formRef.current && !formRef.current.contains(event.target)) {
         setSuggestions([]);
@@ -74,7 +88,9 @@ const SearchForm = () => {
       <div className="search-form__input-wrapper">
         <input
           type="text"
-          placeholder="Procure aqui por um pokemon..."
+          placeholder={
+            isMobile ? "Buscar..." : "Procure aqui por um pokemon..."
+          }
           className="search-form__input"
           value={input}
           onChange={handleInputChange}

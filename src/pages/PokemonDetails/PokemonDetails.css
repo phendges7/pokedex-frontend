@@ -203,6 +203,10 @@
     padding: 1rem;
   }
 
+  .pokemon-details__back {
+    background-image: url("../../assets/card-back-90deg.png");
+  }
+
   .pokemon-details__image {
     max-height: 200px;
   }
