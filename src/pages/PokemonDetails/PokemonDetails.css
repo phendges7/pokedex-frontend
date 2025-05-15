@@ -18,6 +18,10 @@
   margin: 1rem 0;
 }
 
+.pokemon-details__description {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+}
+
 /* Card Container */
 .pokemon-details__card-wrapper {
   perspective: 1000px;
