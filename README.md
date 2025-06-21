@@ -116,12 +116,6 @@ Tornar o projeto mais acessível para todos os usuários, incluindo:
 
 ---
 
-## Link do Website
-
-[WebApp implementado na plataforma VERCEL](https://pokedex-frontend.vercel.app/)
-
----
-
 ## 📧 Contato
 
 Para dúvidas ou sugestões, entre em contato:
