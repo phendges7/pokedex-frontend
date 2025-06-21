@@ -1,0 +1,106 @@
+/* Evolution block */
+.evolution {
+  width: 100%;
+  padding: 1rem;
+}
+
+.evolution__title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+}
+
+/* Card styles */
+.evolution__card {
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evolution__card:hover {
+  transform: scale(1.03);
+}
+
+.evolution__image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.evolution__placeholder {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+.evolution__name {
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  color: #333;
+}
+
+/* Estilo da paginação */
+.swiper-pagination-bullet {
+  background: #ccc;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff0000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .evolution__image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .evolution__placeholder {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 544px) {
+  .evolution__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .evolution__card {
+    padding: 0.8rem;
+  }
+
+  .evolution__image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .evolution__name {
+    font-size: 1rem;
+  }
+
+  .evolution__placeholder {
+    width: 80px;
+    height: 80px;
+    font-size: 0.8rem;
+  }
+}

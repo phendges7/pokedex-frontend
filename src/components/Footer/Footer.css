@@ -1,0 +1,28 @@
+.footer {
+  background-color: pink;
+  width: 100%;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+
+.footer__copyright {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*------- Media Query TABLET -------*/
+
+/*------- Media Query MOBILE -------*/
+@media screen and (max-width: 544px) {
+  .footer__copyright {
+    margin: 0 auto 36px;
+    font-size: 14px;
+    line-height: 1;
+  }
+}

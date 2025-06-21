@@ -1,0 +1,47 @@
+.main__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  position: static;
+}
+
+.main__pagination span {
+  padding: 0 10px;
+}
+
+.main__pagination button {
+  background-color: #f3a683;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main__pagination button:hover {
+  background-color: #e67e22;
+}
+
+.main__card-grid {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  will-change: contents;
+  contain: layout;
+}
+
+.card-grid {
+  position: static;
+  top: 0;
+  left: 0;
+  right: 0;
+  backface-visibility: hidden;
+}
+
+@media screen and (max-width: 475px) {
+  .main__card-grid {
+    margin-bottom: 20px;
+  }
+}
