@@ -33,7 +33,7 @@
   margin-bottom: 2rem;
 }
 
-/* Card Base - Altura ajustável */
+/* Card Base */
 .pokemon-details__card {
   width: 100%;
   transition: transform 0.6s;
@@ -65,23 +65,34 @@
   box-shadow: 15px 10px 15px rgba(0, 0, 0, 1);
 }
 
-/* Frente do Card - Layout flexível */
+/* Frente do Card */
 .pokemon-details__front {
   z-index: 2;
   display: flex;
   flex-direction: row;
-  align-items: stretch; /* Garante que os filhos ocupem a mesma altura */
+  align-items: stretch;
   gap: 2rem;
 }
 
-/* Conteúdo da Frente - Ajuste para preencher a altura */
+/* Verso do Card */
+.pokemon-details__back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../assets/card-back.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Conteúdo da Frente */
 .pokemon-details__content {
   display: flex;
   width: 100%;
-  min-height: 100%; /* Garante que o conteúdo ocupe pelo menos a altura do card */
+  min-height: 100%;
 }
 
-/* Container da Imagem - Ajuste para altura total */
+/* Imagem */
 .pokemon-details__image-wrapper {
   flex: 1;
   display: flex;
@@ -98,7 +109,7 @@
   height: auto;
 }
 
-/* Container de Informações - Ajuste para altura total */
+/* Informações */
 .pokemon-details__info {
   flex: 1;
   max-width: 50%;
@@ -107,18 +118,7 @@
   justify-content: center;
 }
 
-/* Verso do Card - Ajuste para altura total */
-.pokemon-details__back {
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  background-image: url("../../assets/card-back.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-
+/* Dica */
 .pokemon-details__hint {
   position: absolute;
   bottom: 15px;
@@ -144,6 +144,7 @@
   animation: subtleBounce 2s infinite;
 }
 
+/* Animação */
 @keyframes subtleBounce {
   0%,
   100% {
@@ -155,15 +156,13 @@
 }
 
 /* Responsividade */
-/* Adicione estas media queries no final do arquivo */
-
 @media (max-width: 1024px) {
   .pokemon-details {
     width: 95%;
   }
 
   .pokemon-details__card {
-    min-height: 550px; /* Reduz a altura mínima */
+    min-height: 550px;
   }
 
   .pokemon-details__front {
@@ -205,10 +204,6 @@
   .pokemon-details__front,
   .pokemon-details__back {
     padding: 1rem;
-  }
-
-  .pokemon-details__back {
-    background-image: url("../../assets/card-back-90deg.png");
   }
 
   .pokemon-details__image {
