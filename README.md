@@ -116,7 +116,7 @@ Tornar o projeto mais acessível para todos os usuários, incluindo:
 
 ---
 ## Link do video DEMO
-(https://youtu.be/yk-6gVi_l-I)[Gravação realizada enquanto acessando a plataforma via LOCALHOST]
+[Gravação realizada enquanto acessando a plataforma via LOCALHOST](https://youtu.be/yk-6gVi_l-I)
 ---
 
 ## 📧 Contato
