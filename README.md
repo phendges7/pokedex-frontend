@@ -1,136 +1,137 @@
 # Pokedex Frontend
 
-Este repositório contém o frontend do projeto **Pokedex**, uma aplicação que permite aos usuários explorar informações detalhadas sobre Pokémon. Ele foi desenvolvido usando React, com foco em modularidade, performance e uma experiência de usuário amigável.
+This repository contains the frontend for the **Pokedex** project, an application that allows users to explore detailed information about Pokémon. It was developed using React, focusing on a clean and modular architecture.
 
 ---
 
-## 📖 Visão Geral
+## 📖 Overview
 
-O projeto é organizado em uma arquitetura limpa e modular, com componentes reutilizáveis e páginas bem definidas. Ele consome dados de uma API para exibir informações, incluindo uma lista de Pokémon e detalhes específicos de cada um.
+The project is organized with a clean and modular architecture, featuring reusable components and well-defined pages. It consumes data from an API to display information, including a list of Pokémon and their details.
 
 ---
 
-## ✨ Tecnologias Usadas
+## ✨ Technologies Used
 
 ### Frontend
 
-- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **Vite**: Ferramenta de construção rápida para projetos React.
-- **CSS**: Para estilização da interface.
-- **ESLint**: Configuração para garantir qualidade de código.
+- **React**: JavaScript library for building user interfaces.
+- **Vite**: Fast build tool for React projects.
+- **CSS**: For interface styling.
+- **ESLint**: Configuration to ensure code quality.
 
 ---
 
-## 📂 Estrutura de Diretórios
+## 📂 Directory Structure
 
 ### Frontend
 
-- **`src`**: Contém os principais arquivos do React.
-  - **`components`**: Componentes reutilizáveis da aplicação.
-    - **[App](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/App):** Estrutura principal da aplicação.
-    - **[Card](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Card):** Representa cartões individuais para exibir informações de Pokémon.
-    - **[CardGrid](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/CardGrid):** Layout em grade para exibir múltiplos cartões.
-    - **[Footer](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Footer):** Rodapé da aplicação.
-    - **[Header](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Header):** Cabeçalho da aplicação.
-    - **[Navigation](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Navigation):** Barra de navegação.
-    - **[Preloader](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Preloader):** Indicador de carregamento.
-    - **[SearchForm](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/SearchForm):** Formulário de busca de Pokémon.
-  - **`pages`**: Páginas principais da aplicação.
-    - **[Main](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/pages/Main):** Página principal com uma lista de Pokémon.
-    - **[PokemonDetails](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/pages/PokemonDetails):** Página para exibir informações detalhadas de um Pokémon.
-  - **`utils`**: Funções utilitárias para suporte à aplicação.
-  - **`index.css`**: Estilos globais.
-  - **`main.jsx`**: Arquivo de entrada do React.
+- **`src`**: Contains main React source files.
+  - **`components`**: Reusable application components.
+    - **[App](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/App):** Main structure of the app.
+    - **[Card](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Card):** Individual cards displaying Pokémon information.
+    - **[CardGrid](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/CardGrid):** Grid layout for displaying multiple cards.
+    - **[Footer](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Footer):** Application footer.
+    - **[Header](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Header):** Application header.
+    - **[Navigation](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Navigation):** Navigation bar.
+    - **[Preloader](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/Preloader):** Loading indicator.
+    - **[SearchForm](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/components/SearchForm):** Pokémon search form.
+  - **`pages`**: Main application pages.
+    - **[Main](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/pages/Main):** Home page with a Pokémon list.
+    - **[PokemonDetails](https://github.com/phendges7/pokedex-frontend/tree/stage-react-api/src/pages/PokemonDetails):** Page for detailed Pokémon information.
+  - **`utils`**: Utility functions supporting the app.
+  - **`index.css`**: Global styles.
+  - **`main.jsx`**: React entry file.
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## 🚀 How to Run the Project
 
-### Pré-requisitos
+### Prerequisites
 
-- Node.js instalado (v16+).
+- Node.js installed (v16+).
 
 ### Frontend
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/phendges7/pokedex-frontend.git
-   ```
-2. Navegue até a pasta do frontend:
-   ```bash
-   cd pokedex-frontend
-   ```
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
-4. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/phendges7/pokedex-frontend.git
+    ```
+2. Navigate to the frontend folder:
+    ```bash
+    cd pokedex-frontend
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
 ---
 
-## 🛠️ Funcionalidades
+## 🛠️ Features
 
-1. **Listagem de Pokémon**:
-   - Exibição de uma lista com todos os Pokémon, utilizando um layout em grade.
-2. **Busca de Pokémon**:
-   - Formulário de busca para localizar Pokémon específicos.
-3. **Detalhes de Pokémon**:
-   - Página dedicada para exibir informações detalhadas sobre um Pokémon.
-4. **Carregamento Dinâmico**:
-   - Indicador de carregamento para melhorar a experiência do usuário.
-
----
-
-## 🆕 Novas Implementações Propostas
-
-### 1. Sistema de Favoritos:
-
-Adicionar a funcionalidade de marcar Pokémon como favoritos para rápido acesso.
+1. **Pokémon Listing**:
+    - Display a grid list of all Pokémon.
+2. **Pokémon Search**:
+    - Search form to find specific Pokémon.
+3. **Pokémon Details**:
+    - Dedicated page to show detailed information about a Pokémon.
+4. **Dynamic Loading**:
+    - Loading indicator to improve user experience.
 
 ---
 
-### 2. Animações e Transições
+## 🆕 Proposed New Features
 
-Melhorar a experiência geral do usuário ao adicionar:
+### 1. Favorites System
 
-- Animações suaves durante a navegação entre páginas.
-- Efeitos visuais para interações, como cliques e envio de formulários.
-
----
-
-### 3. Acessibilidade
-
-Tornar o projeto mais acessível para todos os usuários, incluindo:
-
-- Navegação por teclado.
-- Suporte para leitores de tela.
-- Modos de alto contraste.
-
-**Benefícios**:
-
-- Garante conformidade com padrões de acessibilidade (WCAG).
-- Melhora a experiência geral para todos os usuários.
-
----
-## Link do video DEMO
-[Gravação realizada enquanto acessando a plataforma via LOCALHOST](https://youtu.be/yk-6gVi_l-I)
----
-
-## 📧 Contato
-
-Para dúvidas ou sugestões, entre em contato:
-
-- **Autor**: [phendges7](https://github.com/phendges7)
+Add the ability to mark Pokémon as favorites for quick access.
 
 ---
 
-## Licença
+### 2. Animations and Transitions
 
-Este projeto é de uso livre para fins educacionais e pessoais.
+Enhance user experience by adding:
+
+- Smooth animations during page navigation.
+- Visual effects for interactions, such as clicks and form submissions.
 
 ---
 
-**Aproveite o projeto e contribua para torná-lo ainda melhor!** 🚀
+### 3. Accessibility
+
+Make the project more accessible for all users, including:
+
+- Keyboard navigation.
+- Screen reader support.
+- High contrast modes.
+
+**Benefits**:
+
+- Ensures compliance with accessibility standards (WCAG).
+- Improves overall experience for all users.
+
+---
+
+## DEMO Video Link
+[Recording accessing the platform via LOCALHOST](https://youtu.be/yk-6gVi_l-I)
+---
+
+## 📧 Contact
+
+For questions or suggestions, contact:
+
+- **Author**: [phendges7](https://linkedin.com/phendges7)
+
+---
+
+## License
+
+This project is free for educational and personal use.
+
+---
+
+**Enjoy the project and contribute to make it even better!** 🚀
