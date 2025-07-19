@@ -124,7 +124,7 @@ Make the project more accessible for all users, including:
 
 For questions or suggestions, contact:
 
-- **Author**: [phendges7](https://linkedin.com/phendges7)
+- **Author**: [phendges7](https://linkedin.com/in/phendges7)
 
 ---
 
